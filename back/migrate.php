@@ -25,6 +25,7 @@ $row = $result->fetch_assoc();
 
 if ($row['count'] === 0) {
     // Lee las preguntas del archivo JSON
+    echo 'AGUSTINO';
     $jsonData = file_get_contents('peliculas.json');
     $preguntas = json_decode($jsonData, true);
 
