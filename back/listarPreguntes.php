@@ -25,7 +25,7 @@ while ($row = $result->fetch_assoc()) {
 <body>
     <h1>Lista de Preguntas</h1>
     <a href="addPregunte.php">Añadir Nueva Pregunta</a>
-    <button onclick="window.location.href='/quiz/frontend/index.html'">Volver al Inicio</button>
+    <button onclick="window.location.href='/web/frontend/index.html'">Volver al Inicio</button>
 
     <div class="table-container">
         <table>

@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Añadir Nueva Pregunta</title>
-    <link rel="stylesheet" type="text/css" href="/quiz/frontend/styles.css">
+    <link rel="stylesheet" type="text/css" href="/web/frontend/styles.css">
 </head>
 <body>
     <h1>Añadir Nueva Pregunta</h1>
