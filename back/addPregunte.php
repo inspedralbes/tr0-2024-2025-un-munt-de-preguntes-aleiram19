@@ -78,6 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         <button type="submit">Insertar Pregunta</button>
     </form>
-    <button id="volverInicio">Volver al Inicio</button>
+    <button id="reiniciarJuego">Volver al Inicio</button>
 </body>
 </html>
