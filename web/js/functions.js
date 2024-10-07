@@ -289,7 +289,6 @@ function listarPreguntas() {
     .then(response => response.text())
     .then(html => {
         document.body.innerHTML = html;
-        // Añadir event listeners a los nuevos botones
         addEventListenersToButtons();
     })
     .catch(error => console.error('Error:', error));
@@ -327,7 +326,8 @@ function addEventListenersToButtons() {
     const editButtons = document.querySelectorAll('.edit-button');
     const deleteButtons = document.querySelectorAll('.delete-button');
     const volverInicioButton = document.querySelector('#volverInicio');
-    
+    const volverListaButton = document.querySelector('#volverLista');
+
     editButtons.forEach(button => {
         button.addEventListener('click', () => editarPregunta(button.dataset.id));
     });
@@ -339,7 +339,12 @@ function addEventListenersToButtons() {
     if (volverInicioButton) {
         volverInicioButton.addEventListener('click', listarPreguntas);
     }
+
+    if (volverListaButton) {
+        volverListaButton.addEventListener('click', listarPreguntas);
+    }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     verificarNombre();
     document.getElementById('reiniciarJuego').addEventListener('click', reiniciarJuego);
@@ -350,60 +355,48 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('anadirPregunta').addEventListener('click', anadirPregunta);
 });
 
-
-
-
-
-// PUEDE VERSE
 function editarPregunta(id) {
-    fetch(`/web/back/editPregunte.php?id=${id}`)
+    fetch(`../back/editPregunte.php?id=${id}`)
     .then(response => response.text())
     .then(html => {
         document.body.innerHTML = html;
-        const form = document.querySelector('form');
+        const form = document.querySelector('#editPreguntaForm');
         if (form) {
-            form.addEventListener('submit', handleSubmitEditQuestion);
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(form);
+                
+                fetch(`../back/editPregunte.php?id=${id}`, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        listarPreguntas();
+                    } else {
+                        alert('Error: ' + (data.message || 'No se pudo actualizar la pregunta'));
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al enviar el formulario:', error);
+                    alert('Error al actualizar la pregunta');
+                });
+            });
         }
-    })
-    .catch(error => console.error('Error:', error));
-}
-
-function handleSubmitEditQuestion(event) {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    
-    fetch('/web/back/editPregunte.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.text())
-    .then(html => {
-        document.body.innerHTML = html;
         addEventListenersToButtons();
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => console.error('Error al cargar el formulario de edición:', error));
 }
 
 function eliminarPregunta(id) {
     if (confirm('¿Estás seguro de eliminar esta pregunta?')) {
-        fetch(`/web/back/deletePregunte.php?id=${id}`)
+        fetch(`../back/deletePregunte.php?id=${id}`)
         .then(response => response.text())
         .then(() => {
             listarPreguntas(); // Recargar la lista de preguntas
         })
         .catch(error => console.error('Error:', error));
     }
-}
-
-function addEventListenersToButtons() {
-    const editButtons = document.querySelectorAll('.edit-button');
-    const deleteButtons = document.querySelectorAll('.delete-button');
-    
-    editButtons.forEach(button => {
-        button.addEventListener('click', () => editarPregunta(button.dataset.id));
-    });
-    
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', () => eliminarPregunta(button.dataset.id));
-    });
 }
