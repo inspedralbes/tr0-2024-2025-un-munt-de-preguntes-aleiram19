@@ -362,14 +362,14 @@ function eliminarPregunta(id) {
         fetch(`../back/deletePregunte.php?id=${id}`)
         .then(response => response.text())
         .then(() => {
-            listarPreguntas(); // Recargar la lista de preguntas
+            listarPreguntas();
         })
         .catch(error => console.error('Error:', error));
     }
 }
 
 function volverInicio() {
-    fetch('../web/index.html')  // Ajusta esta ruta según la ubicación de tu index.html
+    fetch('../web/index.html')  
     .then(response => response.text())
     .then(html => {
         document.body.innerHTML = html;
@@ -421,9 +421,7 @@ function addEventListenersToButtons() {
 
 document.addEventListener('DOMContentLoaded', () => {
     verificarNombre();
-    document.getElementById('reiniciarJuego').addEventListener('click', reiniciarJuego);
-    
-    // Nuevos event listeners para los botones de administración
+    document.getElementById('reiniciarJuego').addEventListener('click', reiniciarJuego);   
     document.getElementById('listarPreguntas').addEventListener('click', listarPreguntas);
     document.getElementById('anadirPregunta').addEventListener('click', anadirPregunta);
     document.getElementById('anadirPregunta').addEventListener('click', anadirPregunta);
