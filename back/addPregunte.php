@@ -1,10 +1,12 @@
 <?php
 require_once 'conexio.php'; 
 
+$mensaje = '';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Me recibe los datos
+    // Procesar los datos del formulario
     $pregunta = $_POST['pregunta'];
-    $imatge = $_POST['imatge']; // 
+    $imatge = $_POST['imatge'];
     $respuesta1 = $_POST['respuesta1'];
     $respuesta2 = $_POST['respuesta2'];
     $respuesta3 = $_POST['respuesta3'];
@@ -27,28 +29,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt_respuesta->execute();
         }
 
-        header("Location: listarPreguntes.php");
-        exit();
+        $mensaje = "Pregunta añadida con éxito.";
     } else {
-        echo "Error: " . $stmt_pregunta->error;
+        $mensaje = "Error: " . $stmt_pregunta->error;
     }
 
     $stmt_pregunta->close(); 
     $stmt_respuesta->close();
-    $conn->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Añadir Nueva Pregunta</title>
-    <link rel="stylesheet" type="text/css" href="/web/frontend/styles.css">
 </head>
 <body>
     <h1>Añadir Nueva Pregunta</h1>
-    <form action="addPregunte.php" method="post">
+    <?php if ($mensaje): ?>
+        <p><?php echo $mensaje; ?></p>
+    <?php endif; ?>
+    <form>
         <label for="pregunta">Pregunta:</label>
         <input type="text" id="pregunta" name="pregunta" required><br>
         
@@ -77,7 +78,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         <button type="submit">Insertar Pregunta</button>
     </form>
-
-    <button onclick="window.location.href='/quiz/frontend/index.html'">Volver al Inicio</button>
+    <button id="volverInicio">Volver al Inicio</button>
 </body>
 </html>

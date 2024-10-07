@@ -41,7 +41,5 @@ if (!$result) {
             <?php endwhile; ?>
         </table>
     </div>
-
-    <script src="../web/js/functions.js"></script>
 </body>
 </html>
