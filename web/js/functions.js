@@ -322,39 +322,6 @@ function anadirPregunta() {
     .catch(error => console.error('Error al cargar el formulario:', error));
 }
 
-function addEventListenersToButtons() {
-    const editButtons = document.querySelectorAll('.edit-button');
-    const deleteButtons = document.querySelectorAll('.delete-button');
-    const volverInicioButton = document.querySelector('#volverInicio');
-    const volverListaButton = document.querySelector('#volverLista');
-
-    editButtons.forEach(button => {
-        button.addEventListener('click', () => editarPregunta(button.dataset.id));
-    });
-    
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', () => eliminarPregunta(button.dataset.id));
-    });
-
-    if (volverInicioButton) {
-        volverInicioButton.addEventListener('click', listarPreguntas);
-    }
-
-    if (volverListaButton) {
-        volverListaButton.addEventListener('click', listarPreguntas);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    verificarNombre();
-    document.getElementById('reiniciarJuego').addEventListener('click', reiniciarJuego);
-    
-    // Nuevos event listeners para los botones de administración
-    document.getElementById('listarPreguntas').addEventListener('click', listarPreguntas);
-    document.getElementById('anadirPregunta').addEventListener('click', anadirPregunta);
-    document.getElementById('anadirPregunta').addEventListener('click', anadirPregunta);
-});
-
 function editarPregunta(id) {
     fetch(`../back/editPregunte.php?id=${id}`)
     .then(response => response.text())
@@ -400,3 +367,37 @@ function eliminarPregunta(id) {
         .catch(error => console.error('Error:', error));
     }
 }
+
+function addEventListenersToButtons() {
+    const editButtons = document.querySelectorAll('.edit-button');
+    const deleteButtons = document.querySelectorAll('.delete-button');
+    const volverInicioButton = document.querySelector('#volverInicio');
+    const volverListaButton = document.querySelector('#volverLista');
+
+    editButtons.forEach(button => {
+        button.addEventListener('click', () => editarPregunta(button.dataset.id));
+    });
+    
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => eliminarPregunta(button.dataset.id));
+    });
+
+    if (volverInicioButton) {
+        volverInicioButton.addEventListener('click', listarPreguntas);
+    }
+
+    if (volverListaButton) {
+        volverListaButton.addEventListener('click', listarPreguntas);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    verificarNombre();
+    document.getElementById('reiniciarJuego').addEventListener('click', reiniciarJuego);
+    
+    // Nuevos event listeners para los botones de administración
+    document.getElementById('listarPreguntas').addEventListener('click', listarPreguntas);
+    document.getElementById('anadirPregunta').addEventListener('click', anadirPregunta);
+    document.getElementById('anadirPregunta').addEventListener('click', anadirPregunta);
+});
+

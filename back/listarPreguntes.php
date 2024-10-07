@@ -19,8 +19,8 @@ if (!$result) {
 </head>
 <body>
     <h1>Lista de Preguntas</h1>
-    <button onclick="anadirPregunta()">Añadir Nueva Pregunta</button>
-    <button onclick="volverInicio()">Volver al Inicio</button>
+    <button id="anadirPreguntaBtn">Añadir Nueva Pregunta</button>
+    <button id="volverInicio">Volver al Inicio</button>
 
     <div class="table-container">
         <table>
