@@ -59,30 +59,26 @@ function iniciarJoc() {
         }
     }, 1000);
 
-    fetch(`../back/getPreguntes.php?num=${estatDeLaPartida.totalPreguntas}`)
+    fetch(`../backend/getPreguntes.php?num=${estatDeLaPartida.totalPreguntas}`)
         .then(response => {
             if (!response.ok) {
-                throw new Error(`Error en la resposta del servidor: ${response.status}`);
+                throw new Error(`Error en la respuesta del servidor: ${response.status}`);
             }
             return response.json();
         })
         .then(data => {
-            if (Array.isArray(data)) {
-                estatDeLaPartida.preguntes = data.map(p => ({ ...p, respondida: false }));
-                mostrarPregunta(estatDeLaPartida.preguntaActual);
-            } else if (data.preguntes && Array.isArray(data.preguntes)) {
+            if (Array.isArray(data.preguntes)) {
                 estatDeLaPartida.preguntes = data.preguntes.map(p => ({ ...p, respondida: false }));
                 mostrarPregunta(estatDeLaPartida.preguntaActual);
             } else {
-                throw new Error('Format de dades inesperat');
+                throw new Error('Formato de datos inesperado');
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            document.getElementById('juego').innerHTML = `<p>Hi ha hagut un error en carregar les preguntes. Si us plau, torna-ho a intentar.</p>`;
+            document.getElementById('juego').innerHTML = `<p>Ha habido un error al cargar las preguntas. Por favor, inténtalo de nuevo.</p>`;
         });
 }
-
 
 // Función para mostrar la pregunta actual
 function mostrarPregunta(index) {
