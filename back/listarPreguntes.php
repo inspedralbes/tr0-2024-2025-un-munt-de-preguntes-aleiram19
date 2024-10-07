@@ -13,19 +13,14 @@ $preguntas = [];
 while ($row = $result->fetch_assoc()) {
     $preguntas[] = $row;
 }
-?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Lista de Preguntas</title>
-    <link rel="stylesheet" type="text/css" href="/quiz/frontend/styles.css">
-</head>
-<body>
+// Si es una solicitud AJAX, solo devuelve el HTML de la tabla
+if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    ob_start();
+?>
     <h1>Lista de Preguntas</h1>
-    <a href="addPregunte.php">Añadir Nueva Pregunta</a>
-    <button onclick="window.location.href='/web/frontend/index.html'">Volver al Inicio</button>
+    <button onclick="anadirPregunta()">Añadir Nueva Pregunta</button>
+    <button onclick="volverInicio()">Volver al Inicio</button>
 
     <div class="table-container">
         <table>
@@ -39,12 +34,30 @@ while ($row = $result->fetch_assoc()) {
                 <td><?php echo $pregunta['id']; ?></td>
                 <td><?php echo $pregunta['pregunta']; ?></td>
                 <td>
-                    <a href="editPregunte.php?id=<?php echo $pregunta['id']; ?>">Editar</a>
-                    <a href="deletePregunte.php?id=<?php echo $pregunta['id']; ?>" onclick="return confirm('¿Estás seguro de eliminar esta pregunta?');">Eliminar</a>
+                    <button class="edit-button" data-id="<?php echo $pregunta['id']; ?>">Editar</button>
+                    <button class="delete-button" data-id="<?php echo $pregunta['id']; ?>">Eliminar</button>
                 </td>
             </tr>
             <?php endforeach; ?>
         </table>
     </div>
+<?php
+    $html = ob_get_clean();
+    echo $html;
+    exit;
+}
+
+// Si no es una solicitud AJAX, muestra la página completa
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Preguntas</title>
+    <link rel="stylesheet" type="text/css" href="/quiz/frontend/styles.css">
+</head>
+<body>
+    <!-- Aquí va el mismo HTML que en la sección AJAX -->
+    <script src="functions.js"></script>
 </body>
 </html>

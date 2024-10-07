@@ -281,3 +281,112 @@ document.addEventListener('DOMContentLoaded', () => {
     verificarNombre();
     document.getElementById('reiniciarJuego').addEventListener('click', reiniciarJuego);
 });
+
+// FUNCIONES PARA EL CRUD
+
+// ... (Código existente) ...
+
+function listarPreguntas() {
+    fetch('/web/back/listarPreguntes.php')
+    .then(response => response.text())
+    .then(html => {
+        document.body.innerHTML = html;
+        // Añadir event listeners a los nuevos botones
+        addEventListenersToButtons();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function anadirPregunta() {
+    fetch('/web/back/addPregunte.php')
+    .then(response => response.text())
+    .then(html => {
+        document.body.innerHTML = html;
+        // Añadir event listener al formulario de añadir pregunta
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', handleSubmitNewQuestion);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function handleSubmitNewQuestion(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    
+    fetch('/web/back/addPregunte.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(html => {
+        document.body.innerHTML = html;
+        addEventListenersToButtons();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function editarPregunta(id) {
+    fetch(`/web/back/editPregunte.php?id=${id}`)
+    .then(response => response.text())
+    .then(html => {
+        document.body.innerHTML = html;
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', handleSubmitEditQuestion);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function handleSubmitEditQuestion(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    
+    fetch('/web/back/editPregunte.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(html => {
+        document.body.innerHTML = html;
+        addEventListenersToButtons();
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function eliminarPregunta(id) {
+    if (confirm('¿Estás seguro de eliminar esta pregunta?')) {
+        fetch(`/web/back/deletePregunte.php?id=${id}`)
+        .then(response => response.text())
+        .then(() => {
+            listarPreguntas(); // Recargar la lista de preguntas
+        })
+        .catch(error => console.error('Error:', error));
+    }
+}
+
+function addEventListenersToButtons() {
+    const editButtons = document.querySelectorAll('.edit-button');
+    const deleteButtons = document.querySelectorAll('.delete-button');
+    
+    editButtons.forEach(button => {
+        button.addEventListener('click', () => editarPregunta(button.dataset.id));
+    });
+    
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => eliminarPregunta(button.dataset.id));
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    verificarNombre();
+    document.getElementById('reiniciarJuego').addEventListener('click', reiniciarJuego);
+    
+    // Nuevos event listeners para los botones de administración
+    document.getElementById('listarPreguntas').addEventListener('click', listarPreguntas);
+    document.getElementById('anadirPregunta').addEventListener('click', anadirPregunta);
+});
+
+// ... (Resto del código existente) ...
