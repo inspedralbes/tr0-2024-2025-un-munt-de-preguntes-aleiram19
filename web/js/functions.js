@@ -284,10 +284,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // FUNCIONES PARA EL CRUD
 
-// ... (Código existente) ...
-
 function listarPreguntas() {
-    fetch('/web/back/listarPreguntes.php')
+    fetch('../back/listarPreguntes.php')
     .then(response => response.text())
     .then(html => {
         document.body.innerHTML = html;
