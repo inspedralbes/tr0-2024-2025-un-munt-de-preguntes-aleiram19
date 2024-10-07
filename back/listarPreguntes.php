@@ -19,8 +19,7 @@ if (!$result) {
 </head>
 <body>
     <h1>Lista de Preguntas</h1>
-    <button id="anadirPreguntaBtn">Añadir Nueva Pregunta</button>
-    <button id="reiniciarJuego">Volver al Inicio</button>
+    <button id="volverInicio">Volver al Inicio</button>
 
     <div class="table-container">
         <table>

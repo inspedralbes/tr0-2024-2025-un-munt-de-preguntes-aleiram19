@@ -368,6 +368,34 @@ function eliminarPregunta(id) {
     }
 }
 
+function volverInicio() {
+    fetch('../web/index.html')  // Ajusta esta ruta según la ubicación de tu index.html
+    .then(response => response.text())
+    .then(html => {
+        document.body.innerHTML = html;
+        inicializarEventListenersInicio();
+    })
+    .catch(error => console.error('Error al cargar la página de inicio:', error));
+}
+
+function inicializarEventListenersInicio() {
+    const listarPreguntasBtn = document.getElementById('listarPreguntas');
+    const anadirPreguntaBtn = document.getElementById('anadirPregunta');
+    const reiniciarJuegoBtn = document.getElementById('reiniciarJuego');
+
+    if (listarPreguntasBtn) {
+        listarPreguntasBtn.addEventListener('click', listarPreguntas);
+    }
+    if (anadirPreguntaBtn) {
+        anadirPreguntaBtn.addEventListener('click', anadirPregunta);
+    }
+    if (reiniciarJuegoBtn) {
+        reiniciarJuegoBtn.addEventListener('click', reiniciarJuego);
+    }
+
+    verificarNombre();
+}
+
 function addEventListenersToButtons() {
     const editButtons = document.querySelectorAll('.edit-button');
     const deleteButtons = document.querySelectorAll('.delete-button');
@@ -383,7 +411,7 @@ function addEventListenersToButtons() {
     });
 
     if (volverInicioButton) {
-        volverInicioButton.addEventListener('click', listarPreguntas);
+        volverInicioButton.addEventListener('click', volverInicio);
     }
 
     if (volverListaButton) {
