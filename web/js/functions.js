@@ -59,7 +59,7 @@ function iniciarJoc() {
         }
     }, 1000);
 
-    fetch(`../backend/getPreguntes.php?num=${estatDeLaPartida.totalPreguntas}`)
+    fetch(`../back/getPreguntes.php?num=${estatDeLaPartida.totalPreguntas}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error en la resposta del servidor: ${response.status}`);
