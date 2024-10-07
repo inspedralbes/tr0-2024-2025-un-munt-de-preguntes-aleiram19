@@ -1,8 +1,15 @@
 <?php
-$server = "localhost:3306"; //localhost:3306
-$username = "a23aleminram_aleiram"; //a23aleminram_aleiram
-$password = "Ramos190598@"; //Ramos190598@
-$bd = "a23aleminram_quiz"; //a23aleminram_quiz
+//PRODUCCION
+//$server = "localhost:3306"; 
+//$username = "a23aleminram_aleiram";
+//$password = "Ramos190598@";
+//$bd = "a23aleminram_quiz"; 
+
+//LOCAL
+$server = "localhost"; //localhost:3306
+$username = "root"; //a23aleminram_aleiram
+$password = ""; //Ramos190598@
+$bd = "quiz"; //a23aleminram_quiz
 
 $conn = new mysqli($server, $username, $password, $bd);
 
