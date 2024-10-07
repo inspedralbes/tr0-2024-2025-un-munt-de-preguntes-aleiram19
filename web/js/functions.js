@@ -59,7 +59,7 @@ function iniciarJoc() {
         }
     }, 1000);
 
-    fetch(`../backend/getPreguntes.php?num=${estatDeLaPartida.totalPreguntas}`)
+    fetch(`../back/getPreguntes.php?num=${estatDeLaPartida.totalPreguntas}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error en la respuesta del servidor: ${response.status}`);
@@ -232,7 +232,7 @@ function getCookie(name) {
 
 // Función para reiniciar el juego
 function reiniciarJuego() {
-    fetch('../backend/finalitza.php')
+    fetch('../back/finalitza.php')
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {

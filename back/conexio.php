@@ -1,6 +1,6 @@
 <?php
 $server = "localhost:3306"; //localhost:3306
-$username = "a23aleminram:aleiram"; //a23aleminram_aleiram
+$username = "a23aleminram_aleiram"; //a23aleminram_aleiram
 $password = "Ramos190598@"; //Ramos190598@
 $bd = "a23aleminram_quiz"; //a23aleminram_quiz
 
