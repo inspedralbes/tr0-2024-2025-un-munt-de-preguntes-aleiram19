@@ -1,0 +1,274 @@
+{
+    "preguntes": [
+      {
+        "id": 1,
+        "pregunta": "En quin any es va estrenar la pel·lícula 'The Matrix'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "1999",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "2000",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "1997",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "2001",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/matrix.jpg"
+      },
+      {
+        "id": 2,
+        "pregunta": "Quin any es va estrenar la pel·lícula 'Titanic'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "1997",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "1998",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "1999",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "2000",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/titanic.jpg"
+      },
+      {
+        "id": 3,
+        "pregunta": "En quin any es va estrenar 'Avatar'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "2009",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "2008",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "2010",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "2011",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/avatar.jpg"
+      },
+      {
+        "id": 4,
+        "pregunta": "Quin any es va estrenar 'Inception'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "2010",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "2009",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "2011",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "2012",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/inception.jpg"
+      },
+      {
+        "id": 5,
+        "pregunta": "En quin any va ser l'estrena de 'The Shawshank Redemption'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "1994",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "1993",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "1995",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "1996",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/redemption.jpg"
+      },
+      {
+        "id": 6,
+        "pregunta": "Quin any es va estrenar 'Pulp Fiction'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "1994",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "1995",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "1993",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "1996",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/pulp_fiction.jpg"
+      },
+      {
+        "id": 7,
+        "pregunta": "En quin any va ser l'estrena de 'Jurassic Park'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "1993",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "1994",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "1992",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "1995",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/jurassic_park.jpg"
+      },
+      {
+        "id": 8,
+        "pregunta": "En quin any es va estrenar 'The Godfather'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "1972",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "1971",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "1973",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "1974",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/padrino.jpg"
+      },
+      {
+        "id": 9,
+        "pregunta": "En quin any es va estrenar 'Forrest Gump'?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "1994",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "1993",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "1995",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "1996",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/forrest_gump.jpg"
+      },
+      {
+        "id": 10,
+        "pregunta": "En quin any es va estrenar 'Jaws' (Tiburón)?",
+        "respostes": [
+          {
+            "id": 1,
+            "resposta": "1975",
+            "correcta": true
+          },
+          {
+            "id": 2,
+            "resposta": "1974",
+            "correcta": false
+          },
+          {
+            "id": 3,
+            "resposta": "1976",
+            "correcta": false
+          },
+          {
+            "id": 4,
+            "resposta": "1977",
+            "correcta": false
+          }
+        ],
+        "imatge": "../img/jaws.jpg"
+      }
+    ]
+  }
