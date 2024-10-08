@@ -59,3 +59,41 @@ if ($id <= 0) {
     while ($respuesta = $result->fetch_assoc()) {
         $respuestas[] = $respuesta;
     }
+    
+    ?>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Editar Pregunta</title>
+    </head>
+    <body>
+        <h1>Editar Pregunta</h1>
+    
+        <form id="editPreguntaForm">
+            <input type="hidden" name="id" value="<?php echo $id; ?>">
+            <label for="pregunta">Pregunta:</label>
+            <input type="text" id="pregunta" name="pregunta" value="<?php echo htmlspecialchars($pregunta['pregunta']); ?>" required><br>
+    
+            <label for="imatge">Imagen (URL):</label>
+            <input type="text" id="imatge" name="imatge" value="<?php echo htmlspecialchars($pregunta['imatge']); ?>" required><br>
+            
+            <?php foreach ($respuestas as $index => $respuesta): ?>
+                <input type="hidden" name="respuesta_id<?php echo $index + 1; ?>" value="<?php echo $respuesta['id']; ?>">
+                <label for="respuesta<?php echo $index + 1; ?>">Opción <?php echo $index + 1; ?>:</label>
+                <input type="text" id="respuesta<?php echo $index + 1; ?>" name="respuesta<?php echo $index + 1; ?>" value="<?php echo htmlspecialchars($respuesta['resposta']); ?>" required><br>
+            <?php endforeach; ?>
+            
+            <label for="correcta">Respuesta Correcta:</label>
+            <select id="correcta" name="correcta" required>
+                <?php foreach ($respuestas as $index => $respuesta): ?>
+                    <option value="<?php echo $index; ?>" <?php echo ($respuesta['correcta'] == 1) ? 'selected' : ''; ?>>Opción <?php echo $index + 1; ?></option>
+                <?php endforeach; ?>
+            </select><br>
+            
+            <button type="submit">Actualizar Pregunta</button>
+        </form>
+    
+        <button id="volverLista">Volver a la lista de preguntas</button>
+    </body>
+    </html>
