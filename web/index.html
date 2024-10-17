@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html lang="ca">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Juego de Preguntas</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <h1>Juego de Preguntas</h1>
     
+    <section id="nombreUsuario" style="display: none;">
+        <h2>Introduce tu usuario</h2>
+        <input type="text" id="nombre" required>
+        <button id="guardarNombre">Guardar Usuario</button>
+    </section>
+    
+    <section id="numeroPreguntas" style="display: none;">
+        <h2>¿Cuántas preguntas quiere jugar?</h2>
+        <input type="number" id="cantidadPreguntas" min="1" max="12" required>
+        <button id="guardarCantidad">Guardar Cantidad</button>
+    </section>
+    
+    <section id="juego" style="display: none;">
+        <div id="partida"></div>
+        <div id="marcador"></div>
+        <div id="estado"></div>
+        <div id="timer">Tiempo restante: <span id="time">30</span> segundos</div>
+        <button id="mostrarResultados" style="display: none;">Mostrar Resultados</button>
+    </section>
+    
+    <section id="resultadoFinal" style="display: none;">
+        <h2 id="mensajeFinal"></h2>
+        <button id="reiniciarJuego">Reiniciar Juego</button>
+        <div id="resultadoRespuestas" style="display: none;"></div>
+    </section>
+    <div id="contenido"></div>
+    <button class="admin-btn" id="listarPreguntas">Listar Preguntas</button>
+    <button class="admin-btn" id="anadirPregunta">Añadir Pregunta</button>
+
+    <script src="js/functions.js"></script>
 </body>
 </html>

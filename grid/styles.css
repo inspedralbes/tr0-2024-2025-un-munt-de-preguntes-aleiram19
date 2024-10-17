@@ -1,0 +1,67 @@
+body {
+    background-color: white;
+}
+
+h1{
+    text-align: center;
+}
+
+#graella {
+    display: grid;
+    grid-template-columns: repeat (3, 1fr );
+    grid-template-rows: repeat (3, 1fr);
+    grid-gap: 10px;
+    grid-template-areas: 
+        "part1  part1  part2"
+        "part3  vacio2  vacio3"
+        "vacio4  part4  part5";
+}
+
+.info h2{
+    color: rgb(4, 43, 80);
+}
+
+.example {
+    color: blue;
+}
+
+#part1 {
+    grid-area: part1;
+    background-color: rgb(181, 189, 211);
+}
+
+#part2 {
+    grid-area: part2;
+    background-color: rgb(181, 189, 211);}
+
+#part3 {
+    grid-area: part3;
+    background-color: rgb(181, 189, 211);}
+
+#part4 {
+    grid-area: part4;
+    background-color: rgb(181, 189, 211);}
+
+#part5 {
+    grid-area: part5;
+    background-color: rgb(181, 189, 211);}
+
+#ejem1 {
+    text-align: center;
+}
+
+#ejem2 {
+    font-style: oblique;
+}
+
+#ejem3 {
+    font-size: xx-large;
+}
+
+#ejem4 {
+    text-decoration: underline;
+}
+
+#ejem5 {
+    text-transform: uppercase;
+}
